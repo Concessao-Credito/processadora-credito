@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: processadora-credito
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+
+server:
+  address: 0.0.0.0
+  port: 8085
+
+resilience4j.circuitbreaker:
+  instances:
+    externalApi:
+      registerHealthIndicator: true
+      failureRateThreshold: 50
+      ringBufferSizeInClosedState: 5
+      ringBufferSizeInHalfOpenState: 3
+      waitDurationInOpenState: 10000
